@@ -58,27 +58,23 @@ Introduction to unit testing in JavaScript
   <br><br>
   <small v-click>Requirements can range to different levels based on the department (Marketing, Sales, Compliance) or based on a speciality (Architect, Product Owner, Developer)</small>
 
-  <small v-click>
-  Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as whole we say, "System Under Test" or if we're taking about unit test then we say, "Unit Under Test".
-  </small>
-
 <!--
 Before diving into unit test, les't start by defining testing in general so we can build upon it.
 
-To faciltate the defention I've broken it down to two blocks which will answer three question
+To facilitate the definition I've broken it down into two blocks which will answer three question
 
 What?
 How?
 Why?
 
-Those requirments usualy comes from buisness analyst or someone on the team, typically, a tem lead, for example "When the app first opened, send an event using backend API"
+Those requirements usually comes from business analyst or someone on the team, typically, a team lead, for example, "When the app first opened, send an event using backend API"
 
-The manual part involve human interaction in almost every step.
+The manual part involves human interaction in almost every step.
 
 The automation tool, may or may not require interaction at all.
 
 
-To elaporate on the requirment bit
+To elaborate on the requirement bit
 -->
 
 ---
@@ -87,17 +83,26 @@ To elaporate on the requirment bit
 
 <ul>
   <li v-click>To deliver working software to the users.</li>
-  <li v-click>Cumlativlty build trust in the users.</li>
-  <li v-click>More resilient (recoverable) and robust software.</li>
+  <li v-click>To build customer trust and satisfaction.</li>
+  <li v-click>To have more resilient (recoverable) and robust software.</li>
+  <li v-click>Because it's cheaper!</li>
 </ul>
 
 <v-clicks>
-<h2>Why not test?</h2>
+<h2>Why not to test?</h2>
 <p>Increase development time?</p>
 </v-clicks>
 
 <!--
-Someone might argue that writing test delay or slow development time and shipping features, while that might be true sometimes, however, the development time will get slowly in the long term without unit test due to the number of bugs that will rise.
+1. Isn't that everyone's job after all? right!
+
+2. Your user/customer has to trust you in order to pay for your product and use it, if you're to ship software that has major features not working, your customer base will fly away to a competitor.
+
+3. If you do test your product, then you can almost roll back to the last working version without being terrified.
+
+4. Fixing bugs, especially old bugs costly, and sometimes impossible.
+
+Someone might argue that writing test delays or slow development time and shipping features, while that might be true sometimes, however, the development time will get slow in the long term without unit tests due to the number of bugs that will rise.
 -->
 
 ---
@@ -107,12 +112,142 @@ Someone might argue that writing test delay or slow development time and shippin
 <img src="/test-chart.png" width="620" />
 
 <!--
-The Red line, represents the amount of work you can do without unit test. At first, the amount of work can be shipped perhaps quicker in contrary to writing test and shipping code in the same time.
+The Red line represents the amount of work you can do without a unit test. At first, the amount of work can be shipped perhaps quicker in contrary to writing test and shipping code at the same time.
 
-A few month later, you do a change, and it breaks a working feature(s), so instead of focusing on the new feature, you stuck fixing new bugs. 
+A few months later, you do a change, and it breaks a working feature(s), so instead of focusing on the new feature, you are stuck fixing new bugs.
 
-With unit test, you might need a slightly more time to ship a feature, but in the long term,
+With a unit test, you might need slightly more time to ship a feature, but in the long term, when compared to not having a unit test it's definitely quicker.
 -->
+
+---
+
+# What is Unit testing?
+
+<p v-click>A unit is the smallest piece of a functionality.</p>
+<p v-click><small><i>HINT:</i> One function can have multiple unit tests.</small></p>
+
+<p v-click>Unit testing is the process of making sure that a unit</p>
+<ul>
+  <li><small>Meets requirements.</small></li>
+  <li><small>Keeps meeting that requirements overtime.</small></li>
+  <li><b>Is a regression free.</b></li>
+</ul>
+
+<h3 v-click>A unit test should</h3>
+<ul v-click>
+  <li>Verifies a single unit of behavior.</li>
+  <li>Does it quickly.</li>
+  <li>And does it in isolation from other tests.</li>
+</ul>
+
+<small v-click>
+Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as whole we say, "System Under Test" or if we're taking about unit test then we say, "Unit Under Test".
+</small>
+
+<!--
+Now that we know what is testing, let's define what is meant by A Unit
+
+So we apply the definition of testing but on a class or function.
+
+-Keeps meeting those requirements over time.- this is where unit tests play a crucial part. think of doing refactoring, you changed something, but the test failed because the changes altered the actual requirements.
+We call this Regression. A change that has caused a working functionality to break.
+
+goals
+
+1. A unit test should verify only one thing at a time. if you're writing a test case that verifies more than one thing, then you should think again.
+2. A unit test should be fast. CI/CD time
+3. Meaning, unit tests shouldn't be dependent on each other. for example, if a unit test verifies that the button does something, the other unit tests should pass without waiting for that unit test to pass.
+-->
+
+---
+
+# Test Suite & Test Case
+
+<p>Test Suite is group of related test cases that speak about a functionallity or behaviour.</p>
+<p>Test Case is the setup, invokation, and assertion of the unit under test, <span>it should do one thing: assert single output or verify one behaviour</span></p>
+
+<ul>
+<li ><small>Test Suite can be defined using the `describe` function</small></li>
+<li ><small>Test Case can be defined using the `it` or `test` function</small></li>
+</ul>
+<h3>Elements of a test case</h3>
+<ul>
+<li ><small>Report/Description</small>
+<ul>
+<li ><small>Test report is a simple and strightforward description that speaks about the unit under test.</small></li>
+<li ><small>Test report should clearly tell what is being tested and under which cirumstance. Anyone with fair bit of knoweldge in the team should be able to understand the test suite and test case from its report.</small></li>
+</ul>
+</li>
+<li ><small>Setup: Prepare the inputs, mocks, and whatever the unit under test needs in order to get invoked.</small></li>
+<li ><small>Invocation: Invoke the unit under test.</small></li>
+<li ><small>Assertion: Verifies that the unit under test behaves as expected.</small></li>
+</ul>
+
+<!--
+To put everything in action, let's see the following example.
+-->
+
+---
+
+# Your First Test
+
+<p v-click>
+ - <b>Requirements</b> <br> <br>
+  Givin a counter widget <br>
+  When a user click on the "Increase Button" <br>
+  Then the counter label increases by 1 <br>
+</p>
+
+<p>Implementation</p> <br>
+<small v-click><br>
+```jsx
+function Counter() {
+	const [counter, setCounter] = useState(0);
+	return (
+		<>
+			<div>{counter}</div>
+			<button onClick={() => setCounter(counter + 1)}>Increase</button>
+		</>
+	);
+}
+```
+</small>
+
+---
+
+# New Requirement
+
+- Requirement <br>
+  Change the counter widget to increase based on the user provided input
+
+  Givin user enterd a number in the "Increase By" input<br>
+  When a user clicks on the "Increase Button" <br>
+  Then the counter label increases by the user entered number <br>
+
+<small v-click>
+
+- <b>Implementation</b> <br>
+
+```jsx
+function Counter() {
+	const [counter, setCounter] = useState(0);
+	const [increaseBy, setIncreaseBy] = useState(1);
+
+	return (
+		<>
+			<input
+				placeholder="Increase By"
+				value={increaseBy}
+				onChange={(event) => setIncreaseBy(+event.target.value)}
+			/>
+			<div>{counter}</div>
+			<button onClick={() => setCounter(counter + increaseBy)}>Increase</button>
+		</>
+	);
+}
+```
+
+</small>
 
 ---
 
@@ -144,85 +279,13 @@ The last one and perhaps the major one is regression testing. We'll talk about i
 
 Regression test: after any change to the codebase or the software in general we perform this test to ensure that the previously working functionality is still are. in case one of the functionality is not working then we say a regression happened.
 
+
 A regression test doesn't have to be a separate step, usually it is associated to any kind of test that you perform. so if we're executing the intergration test and the results allude that something that was previously working that isn't any more, then we have done regression testing, the same applies on other types of tests.
 
 Regression test is a bit free form, meaning that it can be defined as per company basis, the important thing that it have to be run on the current functionallity and not the new ones.
 
 Companies, of course, might have a regression test as a separate step by only running the test on the current functionality and not the new one. it is a matter of how the teams communicate.
 -->
-
----
-
-# What is Unit testing?
-
-<p v-click>A unit is the smallest part of a software. it can as small as function or a class.</p>
-<p v-click>Unit testing is the process of making sure the unit under test does what expected.</p>
-<p v-click>Unit testing is the process of detecting defects in the unit under test.</p>
-
-<p v-click>Example</p>
-<small v-click>
- - <b>Requirements</b> <br> <br>
-  Givin a counter widget <br>
-  When a user click on the "Increase Button" <br>
-  Then the counter label increases by 1 <br>
-</small>
-<small v-click><br>
- - <b>Implementation</b> <br>
-```jsx
-function Counter() {
-	const [counter, setCounter] = useState(0);
-	return (
-		<>
-			<div>{counter}</div>
-			<button onClick={() => setCounter(counter + 1)}>Increase</button>
-		</>
-	);
-}
-```
-</small>
-
-<!--
-Now that we know what is testing, let's define what is meant by A Unit
-
-So we apply the defention of testing but on a class or function.
-
-To put the concept in action, let's see the following example.
-
-To not to bore you more, let's write our first test suite.
--->
-
----
-
-# Test Suite & Test Case
-
-<p v-click>Test Suite is group of related test cases that speak about a functionallity or behaviour.</p>
-<p v-click>Test Case is the setup, invokation, and assertion of the unit under test, <span>it should do one thing: assert single output or verify one behaviour</span></p>
-
-<v-clicks>
-<ul>
-<li v-click><small>Test Suite can be defined using the `describe` function</small></li>
-<li v-click><small>Test Case can be defined using the `it` or `test` function</small></li>
-</ul>
-</v-clicks>
-
-<p v-click>Test report is the description that speaks about your test suite and cases</p>
-<small  v-click>
-Test Report should clearly tell what is being tested and under which cirumstance. The test report should be simple and strightforward. Anyone with fair bit of knoweldge in the team should be able to understand the test suite and test case from its report.
-</small>
-
-<!--
-Before going further, let's write our test suite for the counter widget.
--->
-
----
-
-# Attributes of unit testing
-
-<ul>
-  <li>It should be fast.</li>
-  <li>It should be small.</li>
-  <li>It should be isolated.</li>
-</ul>
 
 ---
 
@@ -251,226 +314,6 @@ Cons
 <!--
 Usually, the technical dept is cumulative, the longer it lasts, the coster it gets
 -->
-
----
-
-# Quick Example
-
-```jsx
-function Counter(props: readonly { startAt: number, increaseBy: number } = {startAt:0, increaseBy:1}) {
-	const [counter, setCounter] = useState(props.startAt);
-	return (
-		<>
-			<div data-testid="counter-label">{counter}</div>
-			<button data-testid="increase-button" onClick={() => setCounter(counter + props.increaseBy)}>Increase</button>
-		</>
-	);
-}
-```
-
-```typescript
-import userEvent from "@testing-library/user-event";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-it("increases the counter on click by 1", () => {
-	// ARRANGE
-	render(<Counter startAt={0} />);
-	const expected = 1;
-
-	// ACT
-	await userEvent.click(screen.getByTestId("increase-button"));
-
-	// Assert
-	expect(screen.getByTestId("counter-label")).toEqual(expected);
-});
-
-it("increases the counter on click by 5", () => {
-	// ARRANGE
-	render(<Counter startAt={0} increaseBy={5} />);
-	const expected = 1;
-
-	// ACT
-	await userEvent.click(screen.getByTestId("increase-button"));
-
-	// Assert
-	expect(screen.getByTestId("counter-label")).toEqual(expected);
-});
-```
-
----
-
-<small>it should sum up a set of numbers</small>
-
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-	id: number;
-	firstName: string;
-	lastName: string;
-	role: string;
-}
-
-function updateUser(id: number, update: User) {
-	const user = getUser(id);
-	const newUser = { ...user, ...update };
-	saveUser(id, newUser);
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
----
-
-## class: px-20
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-
-## preload: false
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div v-motion :initial="{ x: -80 }" :enter="{ x: 0 }">Slidev</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
 
 ---
 
