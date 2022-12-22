@@ -21,6 +21,7 @@ Introduction to unit testing in JavaScript
 <div class="absolute bottom-10">
   <span class="font-700">
     Ezz Abuzaid  - Senior Software Engineer @Kortext
+    <br>
     24/12/2022
 </span>
 </div>
@@ -31,17 +32,87 @@ Introduction to unit testing in JavaScript
 
 <ul>
   <li>Testing Introduction.</li>
+  <li>Why We Should Test?</li>
   <li>Types of testing.</li>
   <li>What is Unit Testing.</li>
   <li>Test Case & Test Suite.</li>
   <li>Pros & Cons</li>
   <li>Attributes of unit testing.</li>
   <li>Anti Patterns.</li>
-  <li>Why?</li>
   <li>Two Different Kind Of Testing.</li>
   <li>TDD?</li>
   <li>Should I always write test?</li>
 </ul>
+
+---
+
+# What is Testing?
+
+  <ul>
+    <li ><span v-click>Testing is the process of making sure that a system meets certain predefined requirements</span><span v-click>, by executing it either manualy or by using an automation tool.</span></li>
+    <li v-click>The process of identifying defects and errors before shipping a system to the users.</li>
+  </ul>
+  <p v-click>Requirements?</p>
+  <small v-click>A requirement can be as high level as "A user should be able to order a meal and pay for it from within the app itself"
+    or low as "When a user clicks on "Add to cart" button the user should receive a notification.</small>
+  <br><br>
+  <small v-click>Requirements can range to different levels based on the department (Marketing, Sales, Compliance) or based on a speciality (Architect, Product Owner, Developer)</small>
+
+  <small v-click>
+  Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as whole we say, "System Under Test" or if we're taking about unit test then we say, "Unit Under Test".
+  </small>
+
+<!--
+Before diving into unit test, les't start by defining testing in general so we can build upon it.
+
+To faciltate the defention I've broken it down to two blocks which will answer three question
+
+What?
+How?
+Why?
+
+Those requirments usualy comes from buisness analyst or someone on the team, typically, a tem lead, for example "When the app first opened, send an event using backend API"
+
+The manual part involve human interaction in almost every step.
+
+The automation tool, may or may not require interaction at all.
+
+
+To elaporate on the requirment bit
+-->
+
+---
+
+# Why?
+
+<ul>
+  <li v-click>To deliver working software to the users.</li>
+  <li v-click>Cumlativlty build trust in the users.</li>
+  <li v-click>More resilient (recoverable) and robust software.</li>
+</ul>
+
+<v-clicks>
+<h2>Why not test?</h2>
+<p>Increase development time?</p>
+</v-clicks>
+
+<!--
+Someone might argue that writing test delay or slow development time and shipping features, while that might be true sometimes, however, the development time will get slowly in the long term without unit test due to the number of bugs that will rise.
+-->
+
+---
+
+# Chart
+
+<img src="/test-chart.png" width="620" />
+
+<!--
+The Red line, represents the amount of work you can do without unit test. At first, the amount of work can be shipped perhaps quicker in contrary to writing test and shipping code in the same time.
+
+A few month later, you do a change, and it breaks a working feature(s), so instead of focusing on the new feature, you stuck fixing new bugs. 
+
+With unit test, you might need a slightly more time to ship a feature, but in the long term,
+-->
 
 ---
 
@@ -82,59 +153,21 @@ Companies, of course, might have a regression test as a separate step by only ru
 
 ---
 
-# What is Testing?
-
-  <ul>
-    <li ><span v-click>Testing is the process of making sure that a system meets certain predefined requirements</span><span v-click>, by executing it either manualy or by using an automation tool.</span></li>
-    <li v-click>The process of identifying defects and errors before shipping a system to the users.</li>
-  </ul>
-  <p v-click>Requirements?</p>
-  <small v-click>A requirement can be as high level as "A user should be able to order a meal and pay for it from within the app itself"
-    or low as "When a user clicks on "Add to cart" button the user should receive a notification.</small>
-  <br><br>
-  <small v-click>Requirements can range to different levels based on the department (Marketing, Sales, Compliance) or based on a speciality (Architect, Product Owner, Developer)</small>
-
-  <p v-click>But why testing is essential?</p>
-  <ul>
-    <li v-click>To deliver working software to the users.</li>
-    <li v-click>Cumlativlty build trust in the users.</li>
-    <li v-click>More resilient (recoverable) and robust software.</li>
-  </ul>
-
-  <small v-click>
-  Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as whole we say, "System Under Test" or if we're taking about unit test then we say, "Unit Under Test".
-  </small>
-
-<!--
-Before diving into unit test, les't start by defining testing in general so we can build upon it.
-
-To faciltate the defention I've broken it down to two blocks which will answer three question
-
-What?
-How?
-Why?
-
-Those requirments usualy comes from buisness analyst or someone on the team, typically, a tem lead, for example "When the app first opened, send an event using backend API"
-
-The manual part involve human interaction in almost every step.
-
-The automation tool, may or may not require interaction at all.
-
-
-To elaporate on the requirment bit
--->
-
----
-
 # What is Unit testing?
 
-A unit is the smallest part of a software. it can as small as function or a class.
-
+<p v-click>A unit is the smallest part of a software. it can as small as function or a class.</p>
 <p v-click>Unit testing is the process of making sure the unit under test does what expected.</p>
 <p v-click>Unit testing is the process of detecting defects in the unit under test.</p>
 
+<p v-click>Example</p>
 <small v-click>
-Example
+ - <b>Requirements</b> <br> <br>
+  Givin a counter widget <br>
+  When a user click on the "Increase Button" <br>
+  Then the counter label increases by 1 <br>
+</small>
+<small v-click><br>
+ - <b>Implementation</b> <br>
 ```jsx
 function Counter() {
 	const [counter, setCounter] = useState(0);
@@ -151,9 +184,9 @@ function Counter() {
 <!--
 Now that we know what is testing, let's define what is meant by A Unit
 
-So we apply the same rules we of testing but on a class or function. so from that we can form a defention for unit testing.
+So we apply the defention of testing but on a class or function.
 
-Let's see the following example to clearify the notion
+To put the concept in action, let's see the following example.
 
 To not to bore you more, let's write our first test suite.
 -->
@@ -172,10 +205,15 @@ To not to bore you more, let's write our first test suite.
 </ul>
 </v-clicks>
 
-<p v-click>Test Report</p>
+<p v-click>Test report is the description that speaks about your test suite and cases</p>
 <small  v-click>
 Test Report should clearly tell what is being tested and under which cirumstance. The test report should be simple and strightforward. Anyone with fair bit of knoweldge in the team should be able to understand the test suite and test case from its report.
 </small>
+
+<!--
+Before going further, let's write our test suite for the counter widget.
+-->
+
 ---
 
 # Attributes of unit testing
@@ -202,7 +240,7 @@ Cons
 
 <ul>
   <li>It requires more time <b>initially</b>.</li>
-  <li>Maintanace.</li>
+  <li>Maintanace Liability.</li>
   <li>Hard to agree on standards.</li>
   <li>Often, no direct result.</li>
 </ul>
