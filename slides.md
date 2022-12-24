@@ -44,12 +44,12 @@ Introduction to unit testing in JavaScript
 # What is Testing?
 
   <ul>
-    <li ><span v-click>Testing is the process of making sure that a system meets certain predefined requirements</span><span v-click>, by executing it either manualy or by using an automation tool.</span></li>
+    <li ><span v-click>Testing is the process of making sure that a system meets certain predefined requirements</span><span v-click>, by executing it either manually or by using an automation tool.</span></li>
     <li v-click>The process of identifying defects and errors before shipping a system to the users.</li>
   </ul>
   <p v-click>Requirements?</p>
   <small v-click>A requirement can be as high level as "A user should be able to order a meal and pay for it from within the app itself"
-    or low as "When a user clicks on "Add to cart" button the user should receive a notification.</small>
+    or low as "When a user clicks on the "Add to cart" button the user should receive a notification.</small>
   <br><br>
   <small v-click>Requirements can range to different levels based on the department (Marketing, Sales, Compliance) or based on a speciality (Architect, Product Owner, Developer)</small>
 
@@ -112,12 +112,12 @@ The regression test is a bit free form, meaning that it can be defined on a per-
   <li v-click>To deliver working software to the users.</li>
   <li v-click>To build customer trust and satisfaction.</li>
   <li v-click>To have more resilient (recoverable) and robust software.</li>
-  <li v-click><u>It's not unit testing chore to ensure the above, however, it can play huge role in doing so!</u></li>
+  <li v-click><u>It's not a unit testing chore to ensure the above, however, it can play a huge role in doing so!</u></li>
 <br>
   <h2 v-click>Why unit test?</h2>
   <li v-click>Because it's cheaper!</li>
   <li v-click>Living documention.</li>
-  <li v-click>Can be source of truth.</li>
+  <li v-click>Can be a source of truth.</li>
   <li v-click>Boost confidance.</li>
   <li v-click>Ease onboarding of new developers.</li>
   <li v-click>Early feedback.</li>
@@ -178,19 +178,19 @@ With a unit test, you might need slightly more time to ship a feature, but in th
 <p v-click>Unit testing is the process of making sure that a unit</p>
 <ul v-click>
   <li><small>Meets requirements.</small></li>
-  <li><small>Keeps meeting those requirements overtime.</small></li>
+  <li><small>Keeps meeting those requirements over time.</small></li>
   <li><b>Is a regression free.</b></li>
 </ul>
 
 <h3 v-click>A unit test should</h3>
 <ul  v-click>
-  <li>Verifies a single unit of behavior.</li>
+  <li>Verifies a single unit of behaviour.</li>
   <li>Does it quickly.</li>
   <li>And does it in isolation from other tests.</li>
 </ul>
 
 <small v-click>
-Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as whole we say, "System Under Test" or if we're taking about unit test then we say, "Unit Under Test".
+Hint: We refer to the thing that is being executed as the "{Thing} Under Test", so in case of testing a System as a whole we say, "System Under Test" or if we're talking about unit test then we say, "Unit Under Test".
 </small>
 
 <!--
@@ -217,13 +217,13 @@ Jest is a JavaScript testing framework built on top of **Jasmine** and maintaine
 - Support all popular frameworks.
 - Have rich API.
 - Provide mocking API.
-- Can be used with esbuild, webpack, ...etc
+- Can be used with ESBuild, webpack, ...etc
 
 ---
 
 # Test Suite & Test Case
 
-<p>Test Suite is group of related test cases that speak about a functionallity or behaviour.</p>
+<p>Test Suite is a group of related test cases that speak about functionality or behaviour.</p>
 <p>Test Case is the setup, invokation, and assertion of the unit under test, <span>it should do one thing: assert single output or verify one behaviour</span></p>
 
 <ul>
@@ -234,8 +234,8 @@ Jest is a JavaScript testing framework built on top of **Jasmine** and maintaine
 <ul>
 <li ><small>Report/Description</small>
 <ul>
-<li ><small>Test report is a simple and strightforward description that speaks about the unit under test.</small></li>
-<li ><small>Test report should clearly tell what is being tested and under which cirumstance. Anyone with fair bit of knoweldge in the team should be able to understand the test suite and test case from its report.</small></li>
+<li ><small>Test report is a simple and straightforward description that speaks about the unit under test.</small></li>
+<li ><small>Test report should clearly tell what is being tested and under which circumstance. Anyone with a fair bit of knowledge in the team should be able to understand the test suite and test case from its report.</small></li>
 </ul>
 </li>
 <li ><small>Setup: Prepare the inputs, mocks, and whatever the unit under test needs in order to get invoked.</small></li>
@@ -355,9 +355,9 @@ using data-testid tells that this attribute is used only for unit tests and noth
 # New Requirement
 
 - Requirement <br>
-  Change the counter widget to increase based on the user provided input
+  Change the counter widget to increase based on the user-provided input
 
-  Given user enterd a number in the "Increase By" input<br>
+  Given the user entered a number in the "Increase By" input<br>
   When a user clicks on the "Increase Button" <br>
   Then the counter label increases by the user entered number <br>
 
@@ -403,13 +403,13 @@ Change the `increaseBy` to 2 and show them how the unit test caught the change.
 
 # Test Double
 
-Test Double is a generic term for any case where you have to replace a production object with fake one for testing purposes.
+Test Double is a generic term for any case where you have to replace a production object with a fake one for testing purposes.
 
 Types
 
 - Stub, Mock, Spy, Fake, and Dummy.
 
-<p v-click>Stub: help to emulate incoming interactions. These interactions are calls the Unit Under Test makes to its dependencies to get input data.</p>
+<p v-click>Stub: helps to emulate incoming interactions. These interactions are calls the Unit Under Test makes to its dependencies to get input data.</p>
 <ul>
   <li v-click>Provide a predetermined response.</li>
   <li v-click>Take a predetermined action, like throwing an exception.</li>
@@ -418,7 +418,7 @@ Types
 <ul>
   <li v-click>verify the collaborator's method is called the correct number of times.</li>
   <li v-click>verify the collaborator's method is called with the correct parameters.</li>
-  <li v-click>verify the collaborator's method is called with the correct parameters throw an exception if they receive a call they don't expect.</li>
+  <li v-click>verify the collaborator's method is called with the correct parameters and throw an exception if they receive a call they don't expect.</li>
 </ul>
 
 <!--
@@ -436,7 +436,7 @@ Test double have types.
 # New Requirement
 
 - Requirement <br>
-  Change the counter widget to increase based on value from the API.
+  Change the counter widget to increase based on the value from the API.
 
   Given user-saved "Increase By" value<br>
   When a user clicks on the "Increase Button" <br>
@@ -471,7 +471,7 @@ function Counter() {
 
 # Test Hooks
 
-A test hook is function that run before or after a test case. Often, while writing tests, you have some setup work that needs to happen before tests run, and you have some finishing work that needs to happen after tests run.
+A test hook is a function that runs before or after a test case. Often, while writing tests, you have some setup work that needs to happen before tests run, and you have some finishing work that needs to happen after tests run.
 
 <ul>
   <li v-click>`beforeEach`.</li>
@@ -533,7 +533,7 @@ When ever you're calling the same unit under test but with a different argument 
 
 # Matchers
 
-Matcher are assertion api to test values.
+Matchers are assertion APIs to test values.
 
 Ref: https://jestjs.io/docs/using-matchers
 
@@ -544,7 +544,7 @@ Ref: https://jestjs.io/docs/using-matchers
 - Requirement <br>
 
   Given a todo list<br>
-  When a user add new todo <br>
+  When a user adds new todo <br>
   Then it should avoid adding todo with white spaces<br>
 
 <!--
@@ -555,12 +555,12 @@ Ref: https://jestjs.io/docs/using-matchers
 
 # Post Talk
 
-- When to write unit test?
-- When not to write unit test?
+- When to write a unit test?
+- When not to write a unit test?
 - Disadvantages.
 - Code Coverage.
 - Best Practices.
-- Consistancy.
+- Consistency.
 - FAQ.
 - Discussion!
 
@@ -611,7 +611,7 @@ For instance, Change the anchor tag to a button - you would still have the same 
   <li>Maintanace Liability.</li>
   <li>Hard to agree on standards.</li>
   <li>Often, no direct result.</li>
-  <li>Wrong setup for test might incur high expenses ^^.</li>
+  <li>Wrong setup for a test might incur high expenses ^^.</li>
 </ul>
 
 <!--
@@ -632,7 +632,7 @@ Unit testing itself is code so it comes with the burden of maintaining it. That'
 # F.I.R.S.T Principle
 
 - Fast: They do not do much, so obviously they are quick to run.
-- Independent: A test shouldn't mutate outer state or cause other tests to fail.
+- Independent: A test shouldn't mutate the outer state or cause other tests to fail.
 - Repeatable: Tests should be repeatable in any environment without varying results. If they do not depend on a network or database, then it removes the possible reasons for tests failing, as the only thing they depend on is test double. If the test fails, then the unit test is not working correctly or the test is set up wrong.
 
 - Self-validating: Each test has a single assert or two at most, which will determine whether the test passes or fails. (Look at the picture below)
@@ -650,7 +650,7 @@ Code coverage is a metric that can help you understand how much of your sourceco
 
 Code Coverage Formula = (Number of lines of code executed by a testing algorithm / Total number of lines of the code source) \* 100.
 
-Code Coverage aim is to answer the following question: <b>Does the project have enough tests?</b>
+Code Coverage's aim is to answer the following question: <b>Does the project have enough tests?</b>
 
 ---
 
@@ -659,15 +659,15 @@ Code Coverage aim is to answer the following question: <b>Does the project have 
 <ul>
   <li>Run the unit test as part of Continuous Integration.</li>
   <li>Enfore (%) coverage.</li>
-  <li>Don't write unit test for everthing.</li>
+  <li>Don't write a unit test for everything.</li>
   <li>Agree with your team on one standard to write tests.</li>
   <li>ONE UNIT TEST FOR ONE BEHAVIOUR.</li>
   <li>Favor stateless objects.</li>
-  <li>Don't write if statments, loops, or logic. SIMPLE UNIT TEST.</li>
+  <li>Don't write if statements, loops, or logic. SIMPLE UNIT TEST.</li>
   <li>Concise yet informative report.</li>
   <li>Don’t “foo”, use realistic input data.</li>
   <li>Don’t catch errors, expect them.</li>
-  <li>It's okay to write verbose test, don't over reuse!</li>
+  <li>It's okay to write a verbose test, don't over-reuse!</li>
 </ul>
 
 ---
@@ -676,34 +676,36 @@ Code Coverage aim is to answer the following question: <b>Does the project have 
 
 - Testing: is the process of evaluating and verifying that a software product or application does what it is supposed to do.
 
-- Unit testing: is the process of breaking down feature to individual behaviours to ensure they do what they're intended to.
+- Unit testing: is the process of breaking down features into individual behaviours to ensure they do what they're intended to.
 
-- Techincal dept: is the cost of choosing the fast way to develop a feature. where if you spend a bit more time to refine your work you might reduce that techincal dept. Usually, the technical dept is cumulative, the longer it lasts, the more costly it gets.
+- Techincal dept is the cost of choosing the fast way to develop a feature. where if you spend a bit more time to refine your work you might reduce that technical dept. Usually, the technical dept is cumulative, the longer it lasts, the more costly it gets.
 
 - Regression: is bug introduce is a type of software bug where a feature that has worked before stops working.
 
+---
+
 # FAQ
 
-- Unit testing take a lot of time?
-  1. Unit testing is not an addition to your work, It is mandatory, the best thing is to consult with team lead to have you more time.
-  2. You might need to rethink of the tools you use to write test, the tooling you use can greatly help in reducing code boilerplate.
+- Unit testing takes a lot of time?
+  1. Unit testing is not an addition to your work, It is mandatory, and the best thing is to consult with the team lead to having more time.
+  2. You might need to rethink the tools you use to write tests, the tooling you use can greatly help in reducing code boilerplate.
 - Where the unit test should be executed -the old tests-?
-  It's better to run all unit tests in your machine, however, there should be setup in place in CI server to run all tests and possipply a thereshold for code coverage.
-- What if I have to push the code rightaway?
+  It's better to run all unit tests on your machine, however, there should be a setup in place in the CI server to run all tests and possibly a threshold for code coverage.
+- What if I have to push the code right away?
   I got you, don’t write test code, just write test reports, lucky you, jest supports test only report which is a test to be written later on, you can do that by `it(a report that will remind you later what this test case shall verify')` without providing a callback function
 
 ---
 
 # Closing notes
 
-- Always strive to write maintable unit test.
-- Ensure that you and your team are on the same page regarding writing unit test.
-- You still can have bugs even with unit test.
-- Identify what features are the most imporaant and write unit test according to that.
-- Always remember that the more test you write the more maintiance they will require.
-- Use ESLint, prettier and any other static analysis tool that will help in avoding silly bugs.
-- Before writing unit test, make sure that the project architecute allow that. not all architcure testable, at least not all of them can be easily tested.
-- Modularize! a modulare project is testable project.
+- Always strive to write the maintainable unit test.
+- Ensure that you and your team are on the same page regarding writing unit tests.
+- You still can have bugs even with unit tests.
+- Identify what features are the most important and write a unit test according to that.
+- Always remember that the more test you write the more maintenance they will require.
+- Use ESLint, prettier and any other static analysis tool that will help in avoiding silly bugs.
+- Before writing the unit test, make sure that the project architecture allows that. not all architectures are testable, at least not all of them can be easily tested.
+- Modularize! a modular project is a testable project.
 
 ---
 
